@@ -1,4 +1,8 @@
-d3.csv("../data/data.csv", function(error, data) {
+console.log("TEAM: " + amplify.store("team") + " DATA: " + amplify.store("team_data"));
+
+$("#team_name_title").text(amplify.store("team") + " Player Data");
+
+d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
   console.log(data);
 
   var graph_data = [],
@@ -67,9 +71,9 @@ d3.csv("../data/data.csv", function(error, data) {
   	}
 
   	//Assign total games number
-  	if (data[i].Yrs = 1) {
+  	if (data[i].Yrs == 1) {
   		years_num = 0;
-  	} else if (data[i].Yrs = 2) {
+  	} else if (data[i].Yrs == 2) {
   		years_num = 1;
   	} else if (data[i].Yrs < 5) {
   		years_num = 2;

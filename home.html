@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<title>NBA Teams</title>
+		<meta charset="utf-8">
+		<!-- <link rel="shortcut icon" href="../static/images/pennLogo.png"> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="../js/amplify.min.js"></script>
+		<!-- <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link type="text/css" rel="stylesheet" href="../css/home.css">
+
+		<script>
+			var set_team = function (team, data) {
+  			amplify.store("team", team);
+  			amplify.store("team_data", data);
+			}
+		</script>
+	</head>
+	<body>
+
+		<div class="container">
+			<h1>NBA Teams</h1>
+
+			<div class="row">
+				<div class="center col-md-4">
+					<ul>
+						<li class="division">Atlantic</li>
+						<li><a href="index.html" onclick="set_team('Boston Celtics', 'celtics_data.csv')">Boston Celtics</a></li>
+						<li><a href="index.html" onclick="set_team('Brooklyn Nets', 'nets_data.csv')">Brooklyn Nets</a></li>
+						<li><a href="index.html" onclick="set_team('New York Knicks', 'data.csv')">New York Knicks</a></li>
+						<li><a href="index.html" onclick="set_team('Philadelphia 76ers', '76ers_data.csv')">Philadelphia 76ers</a></li>
+						<li><a href="index.html" onclick="set_team('Toronto Raptors', 'raptors_data.csv')">Toronto Raptors</a></li>
+					</ul>
+				</div>
+
+				<div class="center col-md-4">
+					<ul>
+						<li class="division">Central</li>
+						<li><a href="index.html" onclick="set_team('Chicago Bulls', 'bulls_data.csv')">Chicago Bulls</a></li>
+						<li><a href="index.html" onclick="set_team('Cleveland Cavaliers', 'cavs_data.csv')">Cleveland Cavaliers</a></li>
+						<li><a href="index.html" onclick="set_team('Detroit Pistons', 'pistons_data.csv')">Detroit Pistons</a></li>
+						<li><a href="index.html" onclick="set_team('Indiana Pacers', 'pacers_data.csv')">Indiana Pacers</a></li>
+						<li><a href="index.html" onclick="set_team('Milwaukee Bucks', 'bucks_data.csv')">Milwaukee Bucks</a></li>
+					</ul>
+				</div>
+
+				<div class="center col-md-4">
+					<ul>
+						<li class="division">Southeast</li>
+						<li><a href="index.html" onclick="set_team('Atlanta Hawks', 'hawks_data.csv')">Atlanta Hawks</a></li>
+						<li><a href="index.html" onclick="set_team('Charlotte Hornets', 'hornets_data.csv')">Charlotte Hornets</a></li>
+						<li><a href="index.html" onclick="set_team('Miami Heat', 'heat_data.csv')">Miami Heat</a></li>
+						<li><a href="index.html" onclick="set_team('Orlando Magic', 'magic_data.csv')">Orlando Magic</a></li>
+						<li><a href="index.html" onclick="set_team('Washington Wizards', 'wizards_data.csv')">Washington Wizards</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="padding"></div>
+
+			<div class="row">
+				<div class="center col-md-4">
+					<ul>
+						<li class="division">Pacific</li>
+						<li><a href="index.html" onclick="set_team('Golden State Warriors', 'warriors_data.csv')">Golden State Warriors</a></li>
+						<li><a href="index.html" onclick="set_team('Los Angeles Clippers', 'clippers_data.csv')">Los Angeles Clippers</a></li>
+						<li><a href="index.html" onclick="set_team('Los Angeles Lakers', 'lakers_data.csv')">Los Angeles Lakers</a></li>
+						<li><a href="index.html" onclick="set_team('Phoenix Suns', 'suns_data.csv')">Phoenix Suns</a></li>
+						<li><a href="index.html" onclick="set_team('Sacramento Kings', 'kings_data.csv')">Sacramento Kings</a></li>
+					</ul>
+				</div>
+
+				<div class="center col-md-4">
+					<ul>
+						<li class="division">Southwest</li>
+						<li><a href="index.html" onclick="set_team('Dallas Mavericks', 'mavs_data.csv')">Dallas Mavericks</a></li>
+						<li><a href="index.html" onclick="set_team('Houston Rockets', 'rockets_data.csv')">Houston Rockets</a></li>
+						<li><a href="index.html" onclick="set_team('Memphis Grizzlies', 'grizzlies.csv')">Memphis Grizzlies</a></li>
+						<li><a href="index.html" onclick="set_team('New Orleans Pelicans', 'pelicans_data.csv')">New Orleans Pelicans</a></li>
+						<li><a href="index.html" onclick="set_team('San Antonio Spurs', 'spurs_data.csv')">San Antonio Spurs</a></li>
+					</ul>
+				</div>
+
+				<div class="center col-md-4">
+					<ul>
+						<li class="division">Northwest</li>
+						<li><a href="index.html" onclick="set_team('Denver Nuggets', 'nuggets_data.csv')">Denver Nuggets</a></li>
+						<li><a href="index.html" onclick="set_team('Minnesota Timberwolves', 'timberwolves_data.csv')">Minnesota Timberwolves</a></li>
+						<li><a href="index.html" onclick="set_team('Oklahoma City Thunder', 'thunder_data.csv')">Oklahoma City Thunder</a></li>
+						<li><a href="index.html" onclick="set_team('Portland Trail Blazers', 'trail_blazers_data.csv')">Portland Trail Blazers</a></li>
+						<li><a href="index.html" onclick="set_team('Utah Jazz', 'jazz_data.csv')">Utah Jazz</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
