@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<title>New York Knicks</title>
+		<meta charset="utf-8">
+		<!-- <link rel="shortcut icon" href="../static/images/pennLogo.png"> -->
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="../js/spin.min.js"></script>
+		<script type="text/javascript" src="../js/crossfilter.min.js"></script>
+		<script type="text/javascript" src="../js/dc.min.js"></script>	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!-- <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link type="text/css" rel="stylesheet" href="../css/dc.css">
+		<link type="text/css" rel="stylesheet" href="../css/main.css">
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="row">
+				<h1>New York Knicks Player Data</h1>
+				<h4><span id="num_players"></span> Players</h4>
+				<h4><span id="from"></span> - <span id="to"></span></h4>
+
+				<table id="dataTable">
+					<thead>
+			      <tr>
+			        <th id="player">Player Name</th>
+			        <th>From</th>
+			        <th>To</th>
+			        <th>Years</th>
+			        <th>Games</th>
+			        <th>Minutes Per Game</th>
+			        <th>Points Per Game</th>
+			        <th>Assists Per Game</th>
+			        <th>Rebounds Per Game</th>
+			        <th>Steals</th>
+			        <th>Blocks</th>
+			        <th>FG%</th>
+			        <th>FT%</th>
+			        <th>3P%</th>
+			      </tr>
+			    </thead>
+				</table>
+			</div>
+
+			<div>
+      	<div id="reset">
+      		<a href="javascript:dc.filterAll(); dc.redrawAll();">Reset</a>
+      	</div>
+			</div>
+
+			<div id="row">
+				<div id="decades_row_chart"></div>
+
+				<div class="well col-md-4">
+					<span id="points_per_game_row_chart" class="chart">
+						<h2>Points Per Game</h2>
+					</span>
+					<p class="x_axis_label">Number of Players</p>
+				</div>
+
+				<div class="well col-md-4">
+					<span id="assists_per_game_row_chart" class="chart">
+						<h2>Assists Per Game</h2>
+					</span>
+					<p class="x_axis_label">Number of Players</p>
+				</div>
+
+
+				<div class="well col-md-4">
+					<span id="rebounds_per_game_row_chart" class="chart">
+						<h2>Rebounds Per Game</h2>
+					</span>
+					<p class="x_axis_label">Number of Players</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="row">
+			<div class="well col-md-4">
+				<span id="total_games_chart" class="chart">
+					<h2>Total Games Played</h2>
+				</span>
+			</div>
+		</div>
+
+		<script src="../js/main.js"></script>
+	</body>
+</html>
