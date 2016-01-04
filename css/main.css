@@ -26,6 +26,7 @@ h1, h2, h4 {
 
 .x_axis_label {
 	text-align: center;
+  margin-top: -10px;
 }
 
 /* Data table */

@@ -39,6 +39,8 @@ d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
   		assists_per_game_num = 0,
   		rebounds_per_game_num = 0,
   		years_num = 0,
+      fgp_num = 0,
+      ftp_num = 0,
   		decade = 0;
 
   for (var i = 0; i < data.length; i++) {
@@ -111,6 +113,36 @@ d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
   		years_num = 5;
   	}
 
+    //Assign a FG% number
+    if (data[i]["FG%"] * 100 < 30) {
+      fgp_num = 0;
+    } else if(data[i]["FG%"] * 100 < 35) {
+      fgp_num = 1;
+    } else if (data[i]["FG%"] * 100 < 40) {
+      fgp_num = 2;
+    } else if (data[i]["FG%"] * 100 < 45) {
+      fgp_num = 3;
+    } else if (data[i]["FG%"] * 100 < 50) {
+      fgp_num = 4;
+    } else {
+      fgp_num = 5;
+    }
+
+    //Assign a FT% number
+    if (data[i]["FT%"] * 100 < 50) {
+      ftp_num = 0;
+    } else if (data[i]["FT%"] * 100 < 60) {
+      ftp_num = 1;
+    } else if (data[i]["FT%"] * 100 < 70) {
+      ftp_num = 2;
+    } else if (data[i]["FT%"] * 100 < 80) {
+      ftp_num = 3;
+    } else if (data[i]["FT%"] * 100 < 90) {
+      ftp_num = 4;
+    } else {
+      ftp_num = 5;
+    }
+
   	if (data[i].STL === "") {
   		data[i].STL = "No data";
   	}
@@ -138,6 +170,8 @@ d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
   		assists_per_game_num: assists_per_game_num,
   		rebounds_per_game_num: rebounds_per_game_num,
   		years_num: years_num,
+      fgp_num: fgp_num,
+      ftp_num: ftp_num,
   		assists_per_game: data[i].AST,
   		rebounds_per_game: data[i].TRB,
   		steals: data[i].STL,
@@ -163,6 +197,9 @@ d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
 	makePPGRowChart(graph_data, ndx);
 	makeAPGRowChart(graph_data, ndx);
 	makeRPGRowChart(graph_data, ndx);
+  makeYearsChart(graph_data, ndx);
+  makeFGPChart(graph_data, ndx);
+  makeFTPChart(graph_data, ndx);
 
 	function makeDataTable(graph_data, ndx) {
     var coursesInfo = ndx.dimension(function(d) {
@@ -354,6 +391,129 @@ function makeRPGRowChart(graph_data, ndx) {
             	return "8.0 - 9.9";
             default:
             	return "10+";
+          }
+        })
+        .transitionDuration(700);
+
+  dc.renderAll();
+};
+
+function makeYearsChart(graph_data, ndx) {
+  var years = ndx.dimension(function(d) {
+    return d.years_num;
+  });
+
+  var yearsGroup = years.group().reduceSum(function(d) {
+    return 1;
+  });
+
+  rowChart = dc.rowChart("#years_chart");
+
+  rowChart.width(350)
+        .height(350)
+        .margins({top: 100, right: 10, bottom: 30, left: 10})
+        .dimension(years)
+        .group(yearsGroup)
+        .elasticX(true)
+        .gap(1)
+        .x(d3.scale.linear().domain([-1, 8]))
+        .label(function(d) {
+          var num = d.key;
+          switch (num) {
+            case 0:
+              return "1";
+            case 1:
+              return "2";
+            case 2:
+              return "3 - 4";
+            case 3:
+              return "5 - 7";
+            case 4:
+              return "8 - 9";
+            default:
+              return "10+";
+          }
+        })
+        .transitionDuration(700);
+
+  dc.renderAll();
+};
+
+function makeFGPChart(graph_data, ndx) {
+  var fgp = ndx.dimension(function(d) {
+    return d.fgp_num;
+  });
+
+  var fgpGroup = fgp.group().reduceSum(function(d) {
+    return 1;
+  });
+
+  rowChart = dc.rowChart("#fg_percentage_chart");
+
+  rowChart.width(350)
+        .height(350)
+        .margins({top: 100, right: 10, bottom: 30, left: 10})
+        .dimension(fgp)
+        .group(fgpGroup)
+        .elasticX(true)
+        .gap(1)
+        .x(d3.scale.linear().domain([-1, 8]))
+        .label(function(d) {
+          var num = d.key;
+          switch (num) {
+            case 0:
+              return "0 - 29.9";
+            case 1:
+              return "30 - 34.9";
+            case 2:
+              return "35 - 39.9";
+            case 3:
+              return "40 - 44.9";
+            case 4:
+              return "45 - 49.9";
+            default:
+              return "50+";
+          }
+        })
+        .transitionDuration(700);
+
+  dc.renderAll();
+};
+
+function makeFTPChart(graph_data, ndx) {
+  var ftp = ndx.dimension(function(d) {
+    return d.ftp_num;
+  });
+
+  var ftpGroup = ftp.group().reduceSum(function(d) {
+    return 1;
+  });
+
+  rowChart = dc.rowChart("#ft_percentage_chart");
+
+  rowChart.width(350)
+        .height(350)
+        .margins({top: 100, right: 10, bottom: 30, left: 10})
+        .dimension(ftp)
+        .group(ftpGroup)
+        .elasticX(true)
+        .gap(1)
+        .x(d3.scale.linear().domain([-1, 8]))
+        .label(function(d) {
+          var num = d.key;
+          switch (num) {
+            case 0:
+              return "0 - 49.9";
+            case 1:
+              return "50 - 59.9";
+            case 2:
+              return "60 - 69.9";
+            case 3:
+              return "70 - 79.9";
+            case 4:
+              return "80 - 89.9";
+            default:
+              return "90+";
           }
         })
         .transitionDuration(700);
