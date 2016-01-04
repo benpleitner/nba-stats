@@ -1,6 +1,7 @@
 console.log("TEAM: " + amplify.store("team") + " DATA: " + amplify.store("team_data"));
 
 $("#team_name_title").text(amplify.store("team") + " Player Data");
+$("title").text(amplify.store("team"));
 
 //Start the spinner and hide the content
 var opts = {
@@ -42,7 +43,7 @@ d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
 
   for (var i = 0; i < data.length; i++) {
   	// console.log(data[i]);
-  	if (data[i].From < date_min) {
+  	if (data[i].From < date_min && data[i].From != "") {
   		date_min = data[i].From;
   	}
 
