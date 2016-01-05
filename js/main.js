@@ -28,7 +28,7 @@ $(".container").css("display", "none");
 var target = document.getElementById("spin");
 var spinner = new Spinner(opts).spin(target);
 
-d3.csv("../data/" + amplify.store("team_data"), function(error, data) {
+d3.csv("data/" + amplify.store("team_data"), function(error, data) {
   console.log(data);
 
   var graph_data = [],
